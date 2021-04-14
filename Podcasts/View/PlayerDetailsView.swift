@@ -162,7 +162,7 @@ class PlayerDetailsView : UIView {
         if playlistEpisodes.isEmpty {
             return
         }
-        let currentEpisodeIndex = playlistEpisodes.index { (ep) -> Bool in
+        let currentEpisodeIndex = playlistEpisodes.firstIndex { (ep) -> Bool in
             return self.episode.title == ep.title && self.episode.author == ep.author
         }
         guard let index = currentEpisodeIndex else { return }
@@ -181,7 +181,7 @@ class PlayerDetailsView : UIView {
             return
         }
         
-        let currentEpisodeIndex = playlistEpisodes.index { (ep) -> Bool in
+        let currentEpisodeIndex = playlistEpisodes.firstIndex { (ep) -> Bool in
             return self.episode.title == ep.title && self.episode.author == ep.author
         }
         

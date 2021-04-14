@@ -41,7 +41,7 @@ class EpisodesController: UITableViewController {
     
     fileprivate func setupFavoriteButton() {
         let savedPodcasts = UserDefaults.standard.savedPodcasts()
-        let alreadyFavorite = savedPodcasts.index(where: { $0.trackName == self.podcast?.trackName && $0.artistName == self.podcast?.artistName }) != nil
+        let alreadyFavorite = savedPodcasts.firstIndex(where: { $0.trackName == self.podcast?.trackName && $0.artistName == self.podcast?.artistName }) != nil
         if alreadyFavorite {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title:"",style: .plain,target: nil,action: nil)
         }else {
@@ -51,18 +51,26 @@ class EpisodesController: UITableViewController {
     
     @objc func handleFetchSavedPodcast(){
         guard let data = UserDefaults.standard.data(forKey: UserDefaults.userDefaultFavoriteKey) else {return}
-        let savedPodcasts = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Podcast]
-        savedPodcasts?.forEach({(p) in
-            print(p.trackName ?? "")
-        })
+        do {
+            let savedPodcasts = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as! [Podcast]
+            savedPodcasts.forEach({(p) in
+                print(p.trackName ?? "")
+            })
+        } catch let unarchivePodcastErr {
+            print(unarchivePodcastErr)
+        }
     }
     
     @objc func handleSaveFavorite(){
         guard let podcast = self.podcast else {return}
         var listOfPodcasts = UserDefaults.standard.savedPodcasts()
         listOfPodcasts.append(podcast)
-        let data = NSKeyedArchiver.archivedData(withRootObject: listOfPodcasts)
-        UserDefaults.standard.set(data,forKey: UserDefaults.userDefaultFavoriteKey)
+        do {
+            let data = try NSKeyedArchiver.archivedData(withRootObject: listOfPodcasts, requiringSecureCoding: false)
+            UserDefaults.standard.set(data,forKey: UserDefaults.userDefaultFavoriteKey)
+        }catch let archiveErr {
+            print(archiveErr)
+        }
         showBadgeHighlight()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title:"",style: .plain,target: nil,action: nil)
     }
@@ -71,16 +79,18 @@ class EpisodesController: UITableViewController {
         UIApplication.mainTabBarController()?.viewControllers?[1].tabBarItem.badgeValue = "New"
     }
     //MARK:- UITableView
-    override func tableView(_ tableView: UITableView,editActionsForRowAt indexPath:IndexPath) -> [UITableViewRowAction] {
-        let downloadAction = UITableViewRowAction(style: .normal,title: "Download") { (_,_) in
-            print("Downloaded")
-            let episode = self.episodes[indexPath.row]
-            UserDefaults.standard.downloadEpisode(episode:episode)
-            APIService.shared.downloadEpisode(episode: episode)
-        }
-        return [downloadAction]
-    }
-    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+       let contextItem = UIContextualAction(style: .normal, title: "Download") { [weak self]  (_, _, _) in
+            let episode = self?.episodes[indexPath.row]
+            UserDefaults.standard.downloadEpisode(episode:episode!)
+            APIService.shared.downloadEpisode(episode: episode!)
+        if let tabBarController = self?.navigationController?.tabBarController  {
+               tabBarController.selectedIndex = 2
+           }
+       }
+       let swipeActions = UISwipeActionsConfiguration(actions: [contextItem])
+       return swipeActions
+   }
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let activityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
         activityIndicatorView.color = .darkGray

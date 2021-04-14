@@ -24,6 +24,7 @@
 		7E86E4532564613E002A3137 /* FavoritePodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED69D3E25645920005FE3E2 /* FavoritePodcastCell.swift */; };
 		7E86E45B2566C956002A3137 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E86E45A2566C956002A3137 /* UserDefaults.swift */; };
 		7E86E45E2567B7B1002A3137 /* DownloadsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E86E45D2567B7B1002A3137 /* DownloadsController.swift */; };
+		7E95A1172625E82300DA4972 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E95A1162625E82300DA4972 /* MainTabBarController.swift */; };
 		7EB27A2A254DF87500CE2B53 /* CMTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB27A29254DF87500CE2B53 /* CMTime.swift */; };
 		7EBEDE312529E4930075F111 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDE302529E4930075F111 /* AppDelegate.swift */; };
 		7EBEDE332529E4930075F111 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDE322529E4930075F111 /* SceneDelegate.swift */; };
@@ -31,7 +32,6 @@
 		7EBEDE382529E4930075F111 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBEDE362529E4930075F111 /* Main.storyboard */; };
 		7EBEDE3A2529E4950075F111 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EBEDE392529E4950075F111 /* Assets.xcassets */; };
 		7EBEDE3D2529E4950075F111 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBEDE3B2529E4950075F111 /* LaunchScreen.storyboard */; };
-		7EBEDE452529E4C60075F111 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDE442529E4C60075F111 /* MainTabBarController.swift */; };
 		7ED69D3025618542005FE3E2 /* PlayerDetailsView+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED69D2F25618542005FE3E2 /* PlayerDetailsView+Gestures.swift */; };
 		7ED69D332561916D005FE3E2 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED69D322561916D005FE3E2 /* UIApplication.swift */; };
 		7ED69D3C25643F67005FE3E2 /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED69D3B25643F67005FE3E2 /* FavoritesController.swift */; };
@@ -56,6 +56,7 @@
 		7E7CBD922541CA1D0008EC2E /* PlayerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsView.swift; sourceTree = "<group>"; };
 		7E86E45A2566C956002A3137 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		7E86E45D2567B7B1002A3137 /* DownloadsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsController.swift; sourceTree = "<group>"; };
+		7E95A1162625E82300DA4972 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		7EB27A29254DF87500CE2B53 /* CMTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMTime.swift; sourceTree = "<group>"; };
 		7EBEDE2D2529E4930075F111 /* Podcasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Podcasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EBEDE302529E4930075F111 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +66,6 @@
 		7EBEDE392529E4950075F111 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7EBEDE3C2529E4950075F111 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7EBEDE3E2529E4950075F111 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7EBEDE442529E4C60075F111 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		7ED69D2F25618542005FE3E2 /* PlayerDetailsView+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerDetailsView+Gestures.swift"; sourceTree = "<group>"; };
 		7ED69D322561916D005FE3E2 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		7ED69D3B25643F67005FE3E2 /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
@@ -177,15 +177,15 @@
 		7EBEDE2F2529E4930075F111 /* Podcasts */ = {
 			isa = PBXGroup;
 			children = (
+				7E7CBD37252B70790008EC2E /* Model */,
+				7E7CBD3D252DB01F0008EC2E /* View */,
+				7E7CBD34252B68880008EC2E /* Controller */,
 				7E7CBD3A252CB27A0008EC2E /* API */,
 				7E7CBD8A253DF5190008EC2E /* Extensions */,
-				7E7CBD3D252DB01F0008EC2E /* View */,
-				7E7CBD37252B70790008EC2E /* Model */,
-				7E7CBD34252B68880008EC2E /* Controller */,
 				7EBEDE342529E4930075F111 /* ViewController.swift */,
+				7E95A1162625E82300DA4972 /* MainTabBarController.swift */,
 				7EBEDE302529E4930075F111 /* AppDelegate.swift */,
 				7EBEDE322529E4930075F111 /* SceneDelegate.swift */,
-				7EBEDE442529E4C60075F111 /* MainTabBarController.swift */,
 				7EBEDE362529E4930075F111 /* Main.storyboard */,
 				7EBEDE392529E4950075F111 /* Assets.xcassets */,
 				7EBEDE3B2529E4950075F111 /* LaunchScreen.storyboard */,
@@ -318,7 +318,6 @@
 				7E7CBD3C252CB28A0008EC2E /* APIService.swift in Sources */,
 				7E7CBD4525319F7B0008EC2E /* Episode.swift in Sources */,
 				7E86E4532564613E002A3137 /* FavoritePodcastCell.swift in Sources */,
-				7EBEDE452529E4C60075F111 /* MainTabBarController.swift in Sources */,
 				7E7CBD932541CA1D0008EC2E /* PlayerDetailsView.swift in Sources */,
 				7E7CBD482531B4D10008EC2E /* EpisodeViewCell.swift in Sources */,
 				7E7CBD8C253DF52F0008EC2E /* String.swift in Sources */,
@@ -330,6 +329,7 @@
 				7ED69D3025618542005FE3E2 /* PlayerDetailsView+Gestures.swift in Sources */,
 				7E86E45B2566C956002A3137 /* UserDefaults.swift in Sources */,
 				7EBEDE332529E4930075F111 /* SceneDelegate.swift in Sources */,
+				7E95A1172625E82300DA4972 /* MainTabBarController.swift in Sources */,
 				7E86E45E2567B7B1002A3137 /* DownloadsController.swift in Sources */,
 				7EB27A2A254DF87500CE2B53 /* CMTime.swift in Sources */,
 				7E7CBD432530B6530008EC2E /* EpisodesController.swift in Sources */,

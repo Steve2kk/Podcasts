@@ -35,6 +35,7 @@ class FavoritePodcastCell: UICollectionViewCell {
         artistNameLabelView.font = UIFont.systemFont(ofSize: 14)
         artistNameLabelView.textColor = .lightGray
     }
+    
     fileprivate func setupStackView() {
         let stackView = UIStackView(arrangedSubviews: [imageView,nameLabelView,artistNameLabelView])
         stackView.axis = .vertical
@@ -45,8 +46,8 @@ class FavoritePodcastCell: UICollectionViewCell {
         stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder :) has not been implemented")
     }
